@@ -1,9 +1,9 @@
 console.log("client side javascript is loaded");
 
 // Screens
-const search = document.getElementById("screen-search");
-const loading = document.getElementById("screen-loading");
-const results = document.getElementById("screen-results");
+const screenSearch = document.getElementById("screen-search");
+const screenLoading = document.getElementById("screen-loading");
+const screenResults = document.getElementById("screen-results");
 
 // Search Screen
 const weatherForm = document.querySelector("form");
