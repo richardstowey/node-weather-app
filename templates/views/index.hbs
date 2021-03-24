@@ -3,29 +3,51 @@
 <html>
 
 <head>
-    <title>Weather</title>
+    <title>Fly away with me</title>
     <link rel="icon" href="/img/weather.png">
     <link rel="stylesheet" href="/css/styles.css">
-    
 </head>
 
 <body>
     <div class="main-content">
         {{>header}}
 
-        <p>Use this site to get your weather!</p>
+<!-- Search Screen -->
+        <div id="screen-search" class="screen-content">
+            <p>Is it kite flying weather? Enter your location to find out.</p>
+            <form>
+                <input placeholder="Croydon, Surrey">
+                <button>Can I fly?</button>
+            </form>
+        </div>
 
-        <form>
-            <input placeholder="Croydon, Surrey">
-            <button>Search</button>
-        </form>
+<!-- Loading Screen -->
+        <div id="screen-loading" class="screen-content">
+            <p>Loading...</p>
 
-        <p id="message-1"></p>
-        <p id="message-2"></p>
+        </div>
+
+<!-- Results Screen -->
+        <div id="screen-results" class="screen-content">
+            <p id="messageOne"></p>
+            <p id="messageTwo"></p>
+
+            <p><span id="weather-speed" class="windspeed">-</span> km/hr</p>
+            <p id="weather-direction">---</p>
+            
+            <p>Temperature: <span id="weather-temp">-</span> &deg;c</p>
+            <p>Feels like: <span id="weather-feels">-</span> &deg;c</p>
+            
+            <p id="returned-location">-</p>
+
+            <p><small>try again</small></p>
+        </div>
+        
+        
     </div>
 
     {{>footer}}
-    <script src="/js/app.js"></script>
+    <script src="/js/client.js"></script>
 </body>
 
 </html>

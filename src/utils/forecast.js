@@ -18,21 +18,12 @@ const forecast = (latitude, longitude, callback) => {
     } else if (body.error) {
       callback("Unable to find weather. Try another search.", undefined);
     } else {
-      callback(
-        undefined,
-        "The weather is currently " +
-          body.current.weather_descriptions[0] +
-          ". " +
-          "The temperature is " +
-          body.current.temperature +
-          ", but it feels like " +
-          body.current.feelslike +
-          ". The wind speed is " +
-          body.current.wind_speed +
-          ". The wind is travelling " +
-          windDirection(body.current.wind_degree) +
-          "."
-      );
+      callback(undefined, {
+        temperature: body.current.temperature,
+        feelsLike: body.current.feelslike,
+        windSpeed: body.current.wind_speed,
+        windDirection: windDirection(body.current.wind_degree),
+      });
     }
   });
 };
@@ -47,3 +38,19 @@ Wind Speed - is it windy enough?
 Wind Direction - which way is it going?
 
 */
+
+/*
+"The weather is currently " +
+          body.current.weather_descriptions[0] +
+          ". " +
+          "The temperature is " +
+          body.current.temperature +
+          ", but it feels like " +
+          body.current.feelslike +
+          ". The wind speed is " +
+          body.current.wind_speed +
+          ". The wind is travelling " +
+          windDirection(body.current.wind_degree) +
+          "."
+
+          */

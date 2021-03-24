@@ -29,6 +29,7 @@ header {
 h1 {
   font-size: 64px;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 header a {
@@ -52,4 +53,18 @@ button {
   background: #888888;
   color: white;
   padding: 8px;
+}
+
+.screen-content {
+  text-align: center;
+}
+
+.nav {
+  text-align: center;
+  font-size: 12px;
+}
+
+.windspeed {
+  font-size: 34px;
+  font-weight: 400;
 }

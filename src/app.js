@@ -26,7 +26,7 @@ app.use(express.static(publicDirectoryPath));
 
 app.get("", (req, res) => {
   res.render("index", {
-    title: "Weather app",
+    title: "fly away with me",
     name: "Richard Stowey",
   });
 });
@@ -63,7 +63,6 @@ app.get("/weather", (req, res) => {
           if (error) {
             return res.send({ error });
           }
-
           res.send({
             forecast: forecastData,
             location,
