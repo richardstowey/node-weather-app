@@ -1,4 +1,8 @@
+// Import node modules
 const request = require("request");
+
+// Import utils
+const windDirection = require("./wind-direction");
 
 const forecast = (latitude, longitude, callback) => {
   const url =
@@ -25,6 +29,8 @@ const forecast = (latitude, longitude, callback) => {
           body.current.feelslike +
           ". The wind speed is " +
           body.current.wind_speed +
+          ". The wind is travelling " +
+          windDirection(body.current.wind_degree) +
           "."
       );
     }
@@ -32,3 +38,12 @@ const forecast = (latitude, longitude, callback) => {
 };
 
 module.exports = forecast;
+
+/* Return:
+
+Weather Description
+Temperature - is it a warm day?
+Wind Speed - is it windy enough?
+Wind Direction - which way is it going?
+
+*/
