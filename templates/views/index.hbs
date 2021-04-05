@@ -6,47 +6,49 @@
     <title>Fly away with me</title>
     <link rel="icon" href="/img/weather.png">
     <link rel="stylesheet" href="/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
-    <div class="main-content">
+    <section class="header">
         {{>header}}
+    </section>
+    <section class="screens">
+      <div class="row_two">
 
-<!-- Search Screen -->
-        <div id="screen-search" class="screen-content">
-            <p>Is it kite flying weather? Enter your location to find out.</p>
-            <form>
-                <input placeholder="Croydon, Surrey">
-                <button>Can I fly?</button>
-            </form>
-        </div>
+            <!-- Search Screen -->
+            <div id="screen-search" class="screen-content">
+            <p>Enter your location to see if it's windy enough to fly a kite, today.</p>
+                    <form id="location-form">
+                        <input placeholder="Croydon, Surrey" id="location-input">
+                        <button id="submit">Can I fly?</button>
+                        <p id="loading"></p>
+                    </form>
+            </div>
 
-<!-- Loading Screen -->
-        <div id="screen-loading" class="screen-content">
-            <p>Loading...</p>
+            <!-- Results Screen -->
+            <div id="screen-results" class="screen-content">
+                <p><span id="wind-speed" class="windspeed">100</span> km/hr</p>
+                <p id="wind-description" class="wind-direction">---</p>
+                <p><span id="wind-direction">---</span> | Temp: <span id="weather-temp">-</span> &deg;c | Feels: <span id="weather-feels">-</span> &deg;c</p>
+                
+                <p id="returned-location">-</p>
 
-        </div>
+                <p><button id="try-again" class="button-small">try again</button></p>
+            </div>
 
-<!-- Results Screen -->
-        <div id="screen-results" class="screen-content">
-            <p id="messageOne"></p>
-            <p id="messageTwo"></p>
-
-            <p><span id="weather-speed" class="windspeed">-</span> km/hr</p>
-            <p id="weather-direction">---</p>
-            
-            <p>Temperature: <span id="weather-temp">-</span> &deg;c</p>
-            <p>Feels like: <span id="weather-feels">-</span> &deg;c</p>
-            
-            <p id="returned-location">-</p>
-
-            <p><small>try again</small></p>
-        </div>
+      </div>
+    </section>
+    {{!-- <section class="subscribe">
+      <div class="row_two">About This Website</div>
+    </section>
+    <section class="footer">
+      <div class="row_two">Row 2</div>
+      <div class="row_three">Row 3</div>
+    </section> --}}
         
-        
-    </div>
 
-    {{>footer}}
+    <!--{{>footer}}-->
     <script src="/js/client.js"></script>
 </body>
 
