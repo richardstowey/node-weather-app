@@ -1,1 +1,6 @@
+# Node modules (too big to upload)
 node_modules/
+
+# Environment Files
+.env
+sendgrid.env
