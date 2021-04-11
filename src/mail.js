@@ -47,10 +47,9 @@ console.log(days[dayOfWeek]);
 
 if (dayOfWeek === 0 || dayOfWeek === 6) {
   // Send email
-  const encodedLocation = encodeURI(user.location);
 
   // Re use the geocode function
-  geocode(encodedLocation, (error, { latitude, longitude, location } = {}) => {
+  geocode(user.location, (error, { latitude, longitude, location } = {}) => {
     if (error) {
       return console.log(error);
     }
