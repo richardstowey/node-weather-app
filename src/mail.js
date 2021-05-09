@@ -8,7 +8,7 @@ const forecast = require("./utils/forecast");
 
 /* Data input */
 const user = {
-  name: "Richard Stowey",
+  name: "Rich",
   email: "richardstowey@gmail.com",
   location: "South Croydon, Surrey",
   timeZoneOffset: -60,
@@ -65,31 +65,39 @@ if (dayOfWeek === 0 || dayOfWeek === 6) {
         return;
       }
 
+      // TODO: Add in templates and choose one
+
       console.log("Windy enough to fly");
+      console.log(user);
+      console.log(forecastData);
 
       // Construct email message to send out when windy enough
       const msg = {
-        to: [{ email: "richardstowey@gmail.com", name: "Richard Stowey" }], // Recipient (array of objects)
+        to: [{ email: user.email, name: user.name }], // Recipient (array of objects)
         from: {
-          email: "notifications@richardstowey.co.uk",
+          email: "notifications@flyawaywith.me",
           name: "Fly Away With Me",
         }, // Verified sender (with Sendgrid)
         reply_to: {
-          email: "notifications@richardstowey.co.uk",
+          email: "notifications@flyawaywith.me",
           name: "Fly Away With Me",
         },
         subject: randomSubject,
-        text:
-          "Pack your kite!\rIt's currently ${forecastData.windSpeed} km/h out there in ${user.location}!\rWhat are you waiting for? Get out there!\rhttp://flyawaywith.me",
-        html:
-          "<h1>Pack your kite!</h1><p>It's currently ${forecastData.windSpeed} km/h out there in ${user.location}!</p><p>What are you waiting for? Get out there!</p><p>Find out more at <a href='http://flyawaywith.me'>Fly Away With Me</a></p>",
+        templateId: "d-8a4291fb067e4d06b7208c9d6a804779",
+        dynamic_template_data: {
+          subject: randomSubject,
+          preheader: randomSubject,
+          name: user.name,
+          location: user.location,
+          windSpeed: forecastData.windSpeed,
+        },
       };
 
       // Send email message
       sgMail
         .send(msg)
         .then((response) => {
-          console.log(response[0].statusCode);
+          console.log("Status code: " + response[0].statusCode);
           console.log(response[0].headers);
         })
         .catch((error) => {
@@ -100,3 +108,17 @@ if (dayOfWeek === 0 || dayOfWeek === 6) {
 } else {
   // don't send an email
 }
+
+/*
+
+Test Data
+
+{
+"subject": "This is the subject",
+"preheader": "This is the preheader",
+"name": "Rich",
+"location": "South Croydon",
+"windSpeed": 17
+}
+
+*/
